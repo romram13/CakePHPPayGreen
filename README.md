@@ -4,6 +4,8 @@
 
 Paygreen has a really simple API. To make a CakePHP integration even easier, I made this plugin which include a Paygreen Component. You just have to load the plugin and the component.
 
+Official Paygreen website : [http://www.paygreen.info]
+
 ### What is easier with the Paygreen Component ?
 
 You just have to fill the necessary datas. CakePHP will provide the right Controller.
@@ -17,7 +19,7 @@ You just have to fill the necessary datas. CakePHP will provide the right Contro
 
 _[Manual]_
 
-* Download this: [https://github.com/romram13/cakephp-paygreen]
+* Download
 * Unzip that download.
 * Copy the resulting folder to `app/Plugin`
 * Rename the folder you just copied to `Paygreen`
