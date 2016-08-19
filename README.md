@@ -56,6 +56,8 @@ Initialize the Paygreen Component and just launch the paiement.
 	$this->Paygreen->PaymentRedirect();
 ```
 
+Your client will be automaticaly redirected to Paygreen.
+
 ## ReturnPayment
 
 In your return action.
@@ -70,10 +72,20 @@ In your return action.
 ```
 In this example "$paygreenData" will be an array with the response of Paygreen.
 
+## CancelPayment
 
-## In the next version
+In your return action.
 
-Coming soon : CancelPayment
+```php
+		$configPaygreen = [
+			'paygreen_privatekey'   => $config['paygreen_privatekey'],
+			'paygreen_publickey'    => $config['paygreen_publickey']
+		];
+		$this->Paygreen->configuration($configPaygreen);
+		$paygreenData = $this->Paygreen->CancelPayment($this->request->data);
+```
+As in ReturnPayment, "$paygreenData" will be an array with the response of Paygreen.
+
 
 ### License
 

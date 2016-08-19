@@ -65,4 +65,16 @@ class PaygreenComponent extends Component {
 
         return $paygreenData;
     }
+
+
+    public function CancelPayment ($requestData) {
+
+        $this->paiement = new PaygreenClient($this->config['paygreen_privatekey']);
+        $this->paiement->setToken($this->config['paygreen_publickey']);
+
+		$this->paiement->parseData($requestData);
+		$paygreenData = $this->paiement->toArray();
+
+		return $paygreenData;
+    }
 }
