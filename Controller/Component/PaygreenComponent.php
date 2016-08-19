@@ -30,19 +30,9 @@ class PaygreenComponent extends Component {
 	}
 
     public function configuration($config) {
-        $this->config = [
-            'paygreen_privatekey'   => $config['paygreen_privatekey'],
-            'paygreen_publickey'    => $config['paygreen_publickey'],
-            'amount'                => $config['amount'],
-            'id'                    => $config['id'],
-            'lastname'              => $config['lastname'],
-            'firstname'             => $config['firstname'],
-            'email'                 => $config['email'],
-            'actionReturn'          => $config['actionReturn'], //Action utilisée pour le retour de paiement
-            'actionNotification'    => $config['actionNotification'], //Action utilisée pour le retour de paiement
-            'actionCancel'          => $config['actionCancel'] //Action utilisée pour le retour de paiement
-
-        ];
+        foreach ($config as $key => $value) {
+            $this->config[$key] = $value;
+        }
     }
 
     public function PaymentRedirect () {
@@ -62,5 +52,17 @@ class PaygreenComponent extends Component {
         $data = urlencode($this->paiement->generateData());
 
         $this->Controller->redirect($url.'?d='.$data);
+    }
+
+
+    public function ReturnPayment ($requestData) {
+
+        $this->paiement = new PaygreenClient($this->config['paygreen_privatekey']);
+        $this->paiement->setToken($this->config['paygreen_publickey']);
+
+		$this->paiement->parseData($requestData);
+		$paygreenData = $this->paiement->toArray();
+
+        return $paygreenData;
     }
 }

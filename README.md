@@ -28,20 +28,18 @@ _[Manual]_
 
 ### Usage
 
-
-
-## PaymentRedirect
-
-Add the component in your Controller
+First, add the component in your Controller
 
 ```php
 public $components = array('Paygreen', 'Paygreen');
 ```
 
+
+## PaymentRedirect
 Initialize the Paygreen Component and just launch the paiement.
 
 ```php
-	$config = [
+	$configPaygreen = [
 		'paygreen_privatekey'   => 'paygreen_privatekey',
 		'paygreen_publickey'    => 'paygreen_publickey',
 		'amount'                => 'amount',
@@ -54,6 +52,31 @@ Initialize the Paygreen Component and just launch the paiement.
 		'actionCancel'          => 'cancel_paygreen' //Action utilisée pour l'annulation du paiement
 	];
 
-	$this->Paygreen->configuration($config);
+	$this->Paygreen->configuration($configPaygreen);
 	$this->Paygreen->PaymentRedirect();
 ```
+
+## ReturnPayment
+
+In your return action.
+
+```php
+		$configPaygreen = [
+			'paygreen_privatekey'   => $config['paygreen_privatekey'],
+			'paygreen_publickey'    => $config['paygreen_publickey']
+		];
+		$this->Paygreen->configuration($configPaygreen);
+		$paygreenData = $this->Paygreen->ReturnPayment($this->request->data);
+```
+In this example "$paygreenData" will be an array with the response of Paygreen.
+
+
+## In the next version
+
+Coming soon : CancelPayment
+
+### License
+
+Copyright 2016, Romain Ramier
+
+Licensed under The MIT License 
