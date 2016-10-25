@@ -25,7 +25,6 @@ _[Manual]_
 * Rename the folder you just copied to `Paygreen`
 
 
-
 ### Usage
 
 First, add the component in your Controller
@@ -33,7 +32,6 @@ First, add the component in your Controller
 ```php
 public $components = array('Paygreen', 'Paygreen');
 ```
-
 
 ## PaymentRedirect
 Initialize the Paygreen Component and just launch the paiement.
